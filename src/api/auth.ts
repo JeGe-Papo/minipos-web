@@ -5,7 +5,8 @@ export type AuthResponse = {
     user: {
         id: number;
         email: string;
-        fullName: string
+        fullName: string;
+        social_url?: string; // 👈 Agregado aquí (opcional con ?)
     }
 };
 
@@ -18,6 +19,7 @@ export type RegisterDto = {
     fullName: string;
     email: string;
     password: string;
+    social_url?: string; // 👈 Agregado aquí también para que permita enviarlo
 };
 
 export const authApi = {
@@ -25,4 +27,4 @@ export const authApi = {
         { method: "POST", body: JSON.stringify(dto) }),
     register: (dto: RegisterDto) => http<AuthResponse>("/auth/register",
         { method: "POST", body: JSON.stringify(dto) }),
-}; 
+};
